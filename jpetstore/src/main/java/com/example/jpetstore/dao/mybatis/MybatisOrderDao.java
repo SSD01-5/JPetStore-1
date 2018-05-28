@@ -32,11 +32,13 @@ public class MybatisOrderDao implements OrderDao {
 	
 	@Transactional
 	public Order getOrder(int orderId) throws DataAccessException {
-		Order order = orderMapper.getOrder(orderId);
-		if (order != null) {
-			order.setLineItems(lineItemMapper.getLineItemsByOrderId(orderId));
-		}
-	    return order;
+//		Order order = orderMapper.getOrder(orderId);
+//		if (order != null) {
+//			order.setLineItems(lineItemMapper.getLineItemsByOrderId(orderId));
+//		}
+		Order order = orderMapper.getOrderAndLineitems(orderId);
+		return order;
+//	    return order;
 	}
 	
 	@Transactional

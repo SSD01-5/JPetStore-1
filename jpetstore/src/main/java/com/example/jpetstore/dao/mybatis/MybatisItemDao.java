@@ -42,4 +42,8 @@ public class MybatisItemDao implements ItemDao {
 	public Item getItem(String itemId) throws DataAccessException {
 		return itemMapper.getItem(itemId);
 	}
+	
+//	public void insertItem(Item item) throws DataAccessException {
+//		itemMapper.insertItem(item);
+//	}
 }

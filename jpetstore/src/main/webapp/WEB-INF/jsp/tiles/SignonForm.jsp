@@ -1,4 +1,4 @@
-<%@ include file="IncludeTop.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${!empty message}">
   <b><font color="red"><c:url value="${message}" /></font></b>
@@ -33,5 +33,3 @@
     <img border="0" src="../images/button_register_now.gif" alt="" />
   </a>
 </div>
-
-<%@ include file="IncludeBottom.jsp"%>

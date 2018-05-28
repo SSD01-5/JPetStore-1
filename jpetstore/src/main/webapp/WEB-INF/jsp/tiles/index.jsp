@@ -1,4 +1,5 @@
-<%@ include file="IncludeTop.jsp" %>
+<%@ page contentType="text/html" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <table style="border:none;border-collapse:collapse;width:100%">
   <tr>
@@ -45,6 +46,12 @@
                     <img border="0" src="../images/birds_icon.gif" /></a>
                 </td>
               </tr>
+              <tr>
+              	<td>
+              		<a href="<c:url value="/shop/addItem.do"/>">
+              		Add Item</a>
+              	</td>
+              </tr>
             </table>
           </td>
           <td style="text-align:center;background-color:white;height:300;width:100%">
@@ -64,7 +71,3 @@
     </td>
   </tr>
 </table>
-
-<%@ include file="IncludeBanner.jsp" %>
-
-<%@ include file="IncludeBottom.jsp" %>

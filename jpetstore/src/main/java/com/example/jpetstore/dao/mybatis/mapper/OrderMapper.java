@@ -34,4 +34,6 @@ public interface OrderMapper {
   void insertOrderStatus(Order order);
 
   int msSqlServerInsertOrder(Order order);
+  
+  Order getOrderAndLineitems(int orderId);
 }

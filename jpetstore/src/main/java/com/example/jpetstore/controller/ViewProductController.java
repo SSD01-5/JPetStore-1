@@ -33,9 +33,13 @@ public class ViewProductController {
 	public String handleRequest(
 			@RequestParam("productId") String productId,
 			ModelMap model) throws Exception {
-		PagedListHolder<Item> itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+		PagedListHolder<Item> itemList = new PagedListHolder<Item>(
+				this.petStore.getItemListByProduct(productId));
 		itemList.setPageSize(4);
-		Product product = this.petStore.getProduct(productId);
+//		Product product = this.petStore.getProduct(productId); 
+//		Product 자체에 대한 정보를 또 검색하는 코드. Item 정보만 가지고 있어도 Product 정보를 가져올수 있는데 왜 중복되게 함?
+//		따라서 아랫줄 처럼 수정 
+		Product product = itemList.getPageList().get(0).getProduct();
 		model.put("itemList", itemList);
 		model.put("product", product);
 		return "Product";

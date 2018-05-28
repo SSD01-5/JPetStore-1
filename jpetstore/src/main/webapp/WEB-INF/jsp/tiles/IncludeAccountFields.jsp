@@ -67,7 +67,7 @@
       <form:errors path="account.languagePreference" cssClass="error" /></td>
   </tr>
   <tr>
-    <td>Favorite Category:</td>
+    <td>Favourite Category:</td>
     <td><form:select path="account.favouriteCategoryId" items="${categories}" /> 
       <form:errors path="account.favouriteCategoryId" cssClass="error" /></td>
   </tr>

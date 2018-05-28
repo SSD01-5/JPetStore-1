@@ -1,4 +1,4 @@
-<%@ include file="IncludeTop.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <table id="main-menu">
   <tr>
@@ -40,5 +40,3 @@
     </tr>
   </table>
 </div>
-
-<%@ include file="IncludeBottom.jsp"%>

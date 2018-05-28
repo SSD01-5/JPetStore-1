@@ -170,6 +170,8 @@ create table item (
         references supplier (suppid)
 );
 
+CREATE SEQUENCE SEQ_ID START WITH 1 INCREMENT BY 1;
+
 grant all on item to public;
 create index itemProd on item (productid);
 

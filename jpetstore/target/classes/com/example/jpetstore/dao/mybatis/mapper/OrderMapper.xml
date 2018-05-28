@@ -102,5 +102,57 @@
 	  	#creditCard#, #expiryDate#, #cardType#, #locale#); 
   	select @@identity as value
   </insert>
+  
+  
+  <!-- 추가한 코드 -->
+  <!-- resultMap...collection 사용해서 ofType LineItem하고 lineItem관련된 column들은 resultMap에 저장  -->
+    <resultMap type="Order" id="OrderAndLineitemMap">
+    <id property="orderId" column="ORDERID" />
+    <result property="username" column="USERNAME" />
+    <result property="orderDate" column="ORDERDATE" /> 
+  	<collection property="lineItems" ofType="LineItem">
+  		<id property="orderId" column="ORDERID" />
+  		<id property="lineNumber" column="LINENUM" />
+  		<result property="itemId" column="ITEMID" />
+  		<result property="quantity" column="QUANTITY" />
+  		<result property="unitPrice" column="UNITPRICE" />  		
+  	</collection>
+  </resultMap>
+  
+	<select id="getOrderAndLineitems" resultMap="OrderAndLineitemMap">	
+    select
+      BILLADDR1 AS billAddress1,
+      BILLADDR2 AS billAddress2,
+      BILLCITY,
+      BILLCOUNTRY,
+      BILLSTATE,
+      BILLTOFIRSTNAME,
+      BILLTOLASTNAME,
+      BILLZIP,
+      SHIPADDR1 AS shipAddress1,
+      SHIPADDR2 AS shipAddress2,
+      SHIPCITY,
+      SHIPCOUNTRY,
+      SHIPSTATE,
+      SHIPTOFIRSTNAME,
+      SHIPTOLASTNAME,
+      SHIPZIP,
+      CARDTYPE,
+      COURIER,
+      CREDITCARD,
+      EXPRDATE AS expiryDate,
+      LOCALE,
+      ORDERDATE,
+      ORDERS.ORDERID,
+      TOTALPRICE,
+      USERID AS username,
+      STATUS,       
+      LINEITEM.LINENUM, LINEITEM.ITEMID, LINEITEM.QUANTITY, LINEITEM.UNITPRICE
+    FROM ORDERS, ORDERSTATUS, LINEITEM
+    WHERE ORDERS.ORDERID = #{value}
+      AND ORDERS.ORDERID = ORDERSTATUS.ORDERID
+      AND ORDERS.ORDERID = LINEITEM.ORDERID
+  </select>
+  
 
 </mapper>
