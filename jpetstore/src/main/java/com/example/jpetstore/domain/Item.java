@@ -18,6 +18,9 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
+  
+  //추가한것 
+  private String sellerUsername;
 
   /* JavaBeans Properties */
   public String getItemId() { return itemId; }
@@ -54,8 +57,19 @@ public class Item implements Serializable {
   public void setAttribute4(String attribute4) { this.attribute4 = attribute4; }
   public String getAttribute5() { return attribute5; }
   public void setAttribute5(String attribute5) { this.attribute5 = attribute5; }
-
-  public String toString() {
+  
+public String toString() {
     return "(" + getItemId().trim() + "-" + getProductId().trim() + ")";
+  }
+  
+
+public String getSellerUsername() {
+	return sellerUsername;
+}
+public void setSellerUsername(String sellerUsername) {
+	this.sellerUsername = sellerUsername;
+}
+  public void initNewItem(Account account) {
+	  sellerUsername = account.getUsername();
   }
 }

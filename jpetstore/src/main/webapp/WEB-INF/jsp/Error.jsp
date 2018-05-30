@@ -1,4 +1,6 @@
-<%@ include file="IncludeTop.jsp" %>
+<%-- <%@ page contentType="text/html; charset=UTF-8" %>
+ --%>
+ <%@ include file="IncludeTop.jsp" %>
 
 <h3><font color="red">Error!</font></h3>
 

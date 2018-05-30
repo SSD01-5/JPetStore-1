@@ -47,6 +47,7 @@ public class OrderController {
 		return creditCardTypes;			
 	}
 	
+//	ADD NEW ORDER
 	@RequestMapping("/shop/newOrder.do")
 	public String initNewOrder(HttpServletRequest request,
 			@ModelAttribute("sessionCart") Cart cart,

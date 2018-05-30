@@ -8,7 +8,7 @@ public class Product implements Serializable {
   /* Private Fields */
 
   private String productId;
-  private String categoryId;
+  private String categoryId; //FISH, DOGS, REPTILES µî
   private String name;
   private String description;
 
