@@ -110,8 +110,13 @@ public class ItemController {
 	protected ModelAndView confirmAddItem(
 			@ModelAttribute("itemForm") ItemForm itemForm,
 			SessionStatus status) {
-		System.out.println("Item has been added.");
-		return null;
+		//½ÇÁ¦ »ðÀÔ 
+		petStore.insertItem(itemForm.getItem());
+		ModelAndView mav =  new ModelAndView("ViewAddedItem");
+		mav.addObject("addedItem", itemForm.getItem());
+		mav.addObject("message", "Thank you, your item has been added.");
+		status.setComplete();
+		return mav;
 	}
 	
 }
