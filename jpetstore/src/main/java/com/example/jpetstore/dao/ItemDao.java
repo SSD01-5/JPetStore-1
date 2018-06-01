@@ -17,7 +17,4 @@ public interface ItemDao {
 
   Item getItem(String itemId) throws DataAccessException;
 
-  void insertItem(Item item) throws DataAccessException;
-  
-  void updateQuantityForInsertItem(Item item) throws DataAccessException;
 }

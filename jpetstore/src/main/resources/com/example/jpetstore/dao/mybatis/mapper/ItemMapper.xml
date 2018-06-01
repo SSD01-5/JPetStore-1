@@ -56,25 +56,11 @@
     WHERE ITEMID = #{itemId}
   </update>
   
- <insert id="insertItem" parameterType="Item">
- 	<!-- keyProperty - Item.java에 있는 -->
- 	<selectKey keyProperty="itemId" resultType="string" order="BEFORE">
- 		SELECT SEQ_ID.NEXTVAL AS ITEMID FROM DUAL
- 	</selectKey>
+<!--   <insert id="insertItem" parameterType="Item">
   	INSERT INTO ITEM
-  	  (ITEMID, PRODUCTID, SELLERUSERNAME, LISTPRICE, ATTR1)
+  	  (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1)
   	VALUES
-  	  (#{itemId},(SELECT PRODUCTID FROM PRODUCT P, CATEGORY C WHERE P.CATEGORY=C.CATID AND C.CATID=#{product.categoryId} AND P.NAME=#{product.name}), #{sellerUsername}, #{listPrice}, #{attribute1})
-  </insert>
-  
-  
-  <insert id="updateQuantityForInsertItem" parameterType="Item">
-  	<selectKey keyProperty="itemId" resultType="string" order="BEFORE">
- 		SELECT SEQ_ID.CURRVAL AS ITEMID FROM DUAL
-  	</selectKey>
-  	INSERT INTO INVENTORY
-      (ITEMID, QTY)
-    VALUES
-      (#{itemId}, 1)
-  </insert>
+  	  (SEQ_ID.NEXTVAL, #{productId}, #{listPrice}, #{unitCost}, #{supplierId}, #{status}, #{attribute1})
+  		
+  </insert> -->
 </mapper>
