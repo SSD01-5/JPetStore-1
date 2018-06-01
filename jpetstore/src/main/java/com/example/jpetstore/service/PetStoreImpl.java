@@ -147,4 +147,12 @@ public class PetStoreImpl implements PetStoreFacade {
 	public List<Order> getOrdersByUsername(String username) {
 		return orderDao.getOrdersByUsername(username);
 	}
+
+	@Override
+	public void insertItem(Item item) {
+		// TODO Auto-generated method stub
+		itemDao.insertItem(item);
+		itemDao.updateQuantityForInsertItem(item);
+		
+	}
 }

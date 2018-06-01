@@ -1,7 +1,5 @@
 package com.example.jpetstore.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,7 +93,6 @@ public class ItemController {
 		UserSession userSession = (UserSession)request.getSession().getAttribute("userSession");
 		itemForm.getItem().setSellerUsername(userSession.getAccount().getUsername());
 
-//		System.out.println(itemForm.getItem().getAttribute1());
 		itemValidator.validateItemFields(itemForm.getItem(), result);
 
 		if(result.hasErrors()) {
@@ -110,8 +107,24 @@ public class ItemController {
 	protected ModelAndView confirmAddItem(
 			@ModelAttribute("itemForm") ItemForm itemForm,
 			SessionStatus status) {
-		System.out.println("Item has been added.");
-		return null;
+		//½ÇÁ¦ »ðÀÔ 
+		petStore.insertItem(itemForm.getItem());
+		ModelAndView mav =  new ModelAndView("ViewAddedItem");
+		mav.addObject("addedItem", itemForm.getItem());
+		mav.addObject("message", "Thank you, your item has been added.");
+		status.setComplete();
+		return mav;
+	}
+	
+	/**
+	 * Added June 1st, 2018
+	 * Showing list of my selling items
+	 */
+	@RequestMapping("/shop/listSellingItems.do")
+	public ModelAndView handleRequest(
+			@ModelAttribute("userSession") UserSession userSession) throws Exception {
+		String username = userSession.getAccount().getUsername();
+		return new ModelAndView();
 	}
 	
 }

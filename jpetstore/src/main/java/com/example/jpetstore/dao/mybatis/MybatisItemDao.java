@@ -43,7 +43,13 @@ public class MybatisItemDao implements ItemDao {
 		return itemMapper.getItem(itemId);
 	}
 	
-//	public void insertItem(Item item) throws DataAccessException {
-//		itemMapper.insertItem(item);
-//	}
+	public void insertItem(Item item) throws DataAccessException {
+		itemMapper.insertItem(item);
+	}
+
+	@Override
+	public void updateQuantityForInsertItem(Item item) throws DataAccessException {
+		itemMapper.updateQuantityForInsertItem(item);
+		
+	}
 }
